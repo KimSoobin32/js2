@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>javascript 4일차 HTML 코드 생성 (Form, location) + js7.html</title>
+<script>
+	//파라미터 출력
+	var url = window.location.search;
+	console.log(url);
+	//?ddd=kim&eee=korea
+	var sp = url.split("&eee=");
+	var country = sp[1];
+	console.log(country);
+	var sp2 = sp[0].split("?ddd=");
+	var id = sp2[1];
+	
+</script>
+</head>
+<body>
+아이디 : <span id="id"></span><br>
+국적 : <span id="country"></span>
+</body>
+<script>
+document.getElementById("id").append(id);
+document.getElementById("country").append(country);	//.innerText = country도 맞음
+</script>
+</html>

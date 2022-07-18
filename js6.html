@@ -1,0 +1,68 @@
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>javascript 4일차 HTML 코드 생성 (input)</title>
+<script>
+	function abc() {
+		var i = document.createElement("input");
+		/*input 에는 type, name, value, className, maxLength*/
+		i.type="text";
+		i.name="security";
+		i.className ="aa";
+		i.maxLength="5";
+		//i.value="";	//value는 넣어야 생성 됨, 빼도 무방
+		
+		document.getElementById("box").append(i);
+	}
+</script>
+<style>
+.aa{
+	width:200px; height: 30px; border:1px solid red;
+}
+</style>
+</head>
+<body>
+<div id="box">
+	<input type="button" value="인증번호" onclick="abc()">
+</div>
+<form id="frm" name="frm" method="GET" action="./js6_1.html">
+아이디 : <input type="text" name="mid" value="hong" readonly>
+<p>설문조사 시스템</p>
+<div id="poll">
+<span>[가장 어려운 과목은 무엇입니까?]</span>
+
+
+</div>
+<input type="button" value="전송" onclick="oksign();">
+</form>
+</body>
+<script>
+	var ww=0;
+	var input,text,label;
+	while(ww<5){
+		label=document.createElement("label");
+		input = document.createElement("input");
+		input.type = "radio";
+		input.name="pollname";	//배열로 받을거 아니면 체크박스 name다르게 해줘야함, input.name="pollname"+ww
+		input.value=ww+1;
+		text = document.createTextNode("설문조사 "+ww);	//<input>ddd</input> 안에 들어가서 텍스트가 안보이게 됨.. </input>없어야 함
+		label.append(input);
+		label.append(text);
+		
+		//input.append(text); //input에 넣으면 태그 닫힘.., input은 바깥태그가 있어야 함
+		document.getElementById("poll").append(label);
+		ww++;
+	}
+	
+	
+	function oksign() {
+		if(frm.pollname.value==""){
+			alert("설문조사 해당 사항을 체크해주세요");
+		}else{
+			frm.submit();
+		}
+	}
+</script>
+</html>
