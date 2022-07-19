@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <script src="http://192.168.100.204:8080/js/js10b.html"></script> -->
+<!-- <form id="frm" name="frm" method="get" action="./test.html"> -->
+<title>javascript 5일차</title>
+
+</head>
+<body>
+<form id="frm" name="frm" method="get">
+<div id="box">
+<span>장바구니 시스템</span><br>
+</div>
+<input type="button" value="신청완료" onclick="sendfruits()">
+</form>
+</body>
+<script>
+var arr = ["사과","딸기","바나나","키위","파인애플","수박","참외"];
+var input,text,label;
+var id = document.getElementById("box");
+
+
+var w=0;
+while(w<arr.length){
+	label=document.createElement("label");
+	input = document.createElement("input");
+	input.type = "checkbox";
+	input.name = "fruits";
+	input.value = w;
+	text = document.createTextNode(arr[w]);
+	label.append(input);
+	label.append(text);
+	
+	document.getElementById("box").append(label);
+	w++;
+}
+
+function sendfruits() {
+	var ww=0;
+	var indexes = [];
+	var count = 0;
+	while(ww<arr.length){
+		//console.log(frm.fruits[ww].checked);
+		if(frm.fruits[ww].checked==true){
+			indexes.push(ww);
+			count++;
+		}
+		ww++;
+	}
+	
+	//console.log(frm.fruits.value);
+	if(indexes.length>=2){
+		
+		//frm.submit();
+		location.href='http://192.168.100.204:8080/js/js10b.html?fruits='+indexes;
+		console.log("partb호출"+indexes);
+	}else{
+		alert("구매하실 과일 2가지 이상을 선택 하세요");
+	}
+	console.log(indexes);
+	
+}
+
+
+//b에 인덱스를 전송
+</script>
+</html>

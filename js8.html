@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>javascript 5일차 checkbox all check 기능</title>
+<script>
+function abc() {
+	//alert("text");
+	var me = document.getElementById("all");
+	console.log(me.checked);
+	var useck;
+	//조건문 형태
+	/*
+	if(me.checked==true){
+		useck = true;
+	}else{
+		useck = false;
+	}
+	*/
+	//삼항연산식
+	me.checked==true?(useck=true):(useck=false);
+	/*
+	var w=1;
+	while(w<=5){	//하위 오브젝트에 대한 id값으로 모두 true/false로 적용
+		//document.getElementById("ct"+w).checked = useck;
+		w++;
+	}*/
+
+	var w=0;
+	while(w<=4){	//하위 오브젝트에 대한 name값으로 모두 true/false로 적용
+		frm.ct[w].checked = useck;
+		w++;
+	}
+	
+	/*부록*/
+	var ea = frm.ct.length;	//name 모두 같을 경우
+	console.log(ea);
+	//name/id 같아야 counting 가능..
+	
+	//name이 다 다를 경우, 우선순의 그룹으로 빈태그를 묶어야 함cts
+	//childNodes : 해당 부모 태그 기준으로 하위 태그를 말함 (단, text는 코드 상 enter를 적용 또는 실제 문자가 적용되어 있을 경우)
+	//var node = document.getElementById("cts").childNodes;
+	//중요 childNodes는 해당 하위 태그에 brㅇ르 적용한 상황이면 추가 작업으로 적용하는 범위가 커지므로 사용하지 않음
+	//단, 적용 예시 방법 <li><input type="text" name="ck1" id="ck1">no1</li>
+	var node = document.getElementById("cts").children;
+	console.log(node.length);
+	var ww=0;
+	var ea2=0;
+	while(ww<node.length){
+		//console.log(node[ww].nodeName);
+		if(node[ww].nodeName=="INPUT"){
+			ea2++;
+		}
+		ww++;
+	}
+	console.log(ea2);
+	
+	
+	
+}
+</script>
+</head>
+<body>
+<form name="frm" id="frm">
+<label><input type="checkbox" name="all" id="all" onclick="abc()">전체선택</label><br><!-- label에 onclick하면 메세지 두번씩 뜸..주의!!!(라벨한번인풋한번) -->
+<span id="cts">
+<input type="checkbox" name="ct" id="ct1">no1<br>
+<input type="checkbox" name="ct" id="ct2">no2<br>
+<input type="checkbox" name="ct" id="ct3">no3<br>
+<input type="checkbox" name="ct" id="ct4">no4<br>
+<input type="checkbox" name="ct" id="ct5">no5<br>
+</span>
+</form>
+</body>
+</html>

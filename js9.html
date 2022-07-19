@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>javascript 5일차 radio all check 기능</title>
+<script>
+function allcheck() {
+	/* console.log(cb.checked);
+	//var radio = document.getElementById("");
+	var dod = document.getElementById("do");
+	var ck;
+	console.log(dod);
+	if(cb.checked==true){
+		//dod.checked = true;
+		//console.log(dod.checked);
+		ck = true;
+	}else{ck = false};
+	
+	var ea = frm.ra1.length;
+	console.log(ea);
+	
+	console.log(frm.ra1[0]);
+	var w=0;
+	while(w<4){
+		frm.ra+w=ck;
+		w++;
+	}
+	dod.checked=ck; */
+	
+	
+
+}
+
+var names = ["sms","email","event","push"];
+function abcd() {
+	var boolen = true;
+	var code;
+	
+	if(f.all.checked==true){
+		code=0;
+	}else{
+		code=1;
+	}
+	
+	var w=0;
+	var test;
+	while(w<names.length){
+		test = document.getElementsByName(names[w]);
+		test[code].checked = boolen;
+		w++;
+	}
+	
+	
+}
+
+</script>
+</head>
+<body>
+<!-- 
+[해당 광고 서비스를 선택하세요]<br>
+<form id="frm" name="frm">
+SMS 수신여부 : <input type="radio" id="do" name="ra1">동의함 <input type="radio" name="ra1" checked>동의안함<br>
+이메일 수신여부 : <input type="radio" id="do" name="ra2">동의함 <input type="radio" name="ra2" checked>동의안함<br>
+이벤트 알림 수신여부 : <input type="radio" id="do" name="ra3">동의함 <input type="radio" name="ra3" checked>동의안함<br>
+푸시알림 수신여부 : <input type="radio" id="do" name="ra4">동의함 <input type="radio" name="ra4" checked>동의안함<br>
+
+전체 서비스에 동의함 <input type="checkbox" id="cb" name="cb" onclick="allcheck();">
+</form>
+ -->
+ <form id="f" name="f">
+ <p>[해당 광고 서비스를 선택하세요]</p>
+ <ul>
+ <li>SMS 수신여부 : <input type="radio" name="sms" value="Y">동의함 <input type="radio" name="sms" value="N" checked>동의안함</li>
+ <li>이메일 수신여부 : <input type="radio" name="email" value="Y">동의함 <input type="radio" name="email" value="N" checked>동의안함</li>
+ <li>이벤트 알림 수신여부 : <input type="radio" name="event" value="Y">동의함 <input type="radio" name="event" value="N" checked>동의안함</li>
+ <li>푸시알림 수신여부 : <input type="radio" name="push" value="Y">동의함 <input type="radio" name="push" value="N" checked>동의안함</li>
+ </ul>
+<label><input type="checkbox" name="all" onclick="abcd();"> 전체 서비스에 동의함 </label>
+ </form>
+</body>
+</html>
