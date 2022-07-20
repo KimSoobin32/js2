@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>javascript 6일차 node - 1차(attribute)</title>
+<script>
+var data = ["m1","m2","m3","m4","m5","m6"];
+function abc(no) {
+	var mu = document.getElementById("menus2");
+	console.log(data[no]);
+
+}
+</script>
+</head>
+<body>
+<ul id="menus">
+	<li menu="0">메뉴1</li>
+	<li menu="1">메뉴2</li>
+	<li menu="2">메뉴3</li>
+	<li menu="3">메뉴4</li>
+	<li menu="4">메뉴5</li>
+	<li menu="5">메뉴6</li>
+</ul>
+
+<ul id="menus2">
+	<li menu="0" onclick="abc(0)">메뉴1</li>
+	<li menu="1" onclick="abc(1)">메뉴2</li>
+	<li menu="2" onclick="abc(2)">메뉴3</li>
+	<li menu="3" onclick="abc(3)">메뉴4</li><!-- menu="3" 두개 불가... -->
+	<li menu="4" onclick="abc(4)">메뉴5</li>
+	<li menu="5" onclick="abc(5)">메뉴6</li>
+</ul>
+</body>
+<script>
+
+
+//function abc(no) {
+	//console.log(no)
+	
+	var m = document.getElementById("menus");
+	//console.log(m.children);	//[li, li, li, li, li, li]
+	//console.log(m.children[0]);	//<li>...</li>
+	
+	var ea = m.children.length;
+	var w=0;
+
+	while(w<ea){
+		//반복문 안에 일반 function 안됨, 핸들링 함수 형태 사용 시 반복문 안에 사용 할 수 있음
+		//단, 그 외 반복문 변수로 배열, 번호 등 적용하지 못함
+		m.children[w].onclick = function(aa) {	//핸들링function, 반복문에 사용 가능, 잘 쓰진 않음
+			//alert(w);	//6만 나옴..
+			//console.log(this);	//<li>...</li>, abc function 안에 넣을 경우 두번눌러야 작동됨..
+			//console.log(aa);
+			var node = this.getAttribute("menu");	//html에는 없는 속성..!!
+			//jquery attr, JAVA attributes
+			//getAttribute : 속성 가져옴, setAttribute : 속성 세팅
+			gopage(node);
+		}
+
+		w++;
+	}
+	
+	
+//}
+function gopage(no) {
+	console.log(data[no]);
+}
+
+</script>
+</html>

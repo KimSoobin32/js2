@@ -4,14 +4,67 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <script src="http://192.168.100.203:8080/js/js10C.html"></script> -->
+<title>대메뉴 링크 페이지</title>
 
-<title>javascript 5일차</title>
-<script>
-
-</script>
 </head>
+
 <body>
 
+<div id="box">
+
+</div>
+
 </body>
+
+<script>
+   var arr = {
+      "name":["푸드페어","메가뷰티쇼","종근당건강","필립스","글로벌 쇼핑데이","특가 대방출"],
+      "dir":[
+      "https://www.coupang.com/np/campaigns/16160?from=home_C1&traid=home_C1&trcid=11169775",
+      "https://pages.coupang.com/p/62484?from=home_C1&traid=home_C1&trcid=6256722548",
+      "https://pages.coupang.com/f/s7260?from=home_C1&traid=home_C1&trcid=11168322",
+      "https://pages.coupang.com/f/s976?from=home_C1&traid=home_C1&trcid=11168328",
+      "https://pages.coupang.com/p/63611?from=home_C1&traid=home_C1&trcid=11169777",
+      "https://www.coupang.com/np/campaigns/82?from=home_C1&traid=home_C1&trcid=5667822457"
+      ]
+   };
+
+   var key = Object.keys(arr);
+
+   //console.log(key.length);
+   //console.log(arr[key[0]].length);
+
+   var ea = arr[key[0]].length;
+   var w = 0;
+   var box = document.getElementById("box");
+   var ul = document.createElement("span");
+
+   var a,li,text;
+   while(w<ea){
+      a= document.createElement("a");
+      a.href = arr[key[1]][w];
+      a.target = "_blank";
+      a.style.textDecoration = "none";
+      a.style.color = "black";
+
+      li = document.createElement("p");
+      li.style.float = "left";
+      li.style.width="150px";
+      li.style.height="50px";
+      li.style.textAlign="center";
+      li.style.lineHeight="50px";
+      li.style.border = "1px solid black";
+      text = document.createTextNode(arr[key[0]][w]);
+
+      li.append(text);
+      a.append(li);
+      ul.append(a);
+
+      w++;
+
+   }
+   box.append(ul);
+
+   </script>
+
 </html>
