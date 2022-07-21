@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>javascript 6일차 배열 및 Object 출력</title>
+<script src="./banner.js"></script><!-- banners : av 이미지, 링크 -->
+<style>
+
+body{padding:0; margin:0;}
+
+
+.urlbox{list-style: none; margin:0; padding:0;
+   width:350px; height:88px;
+
+}
+
+.libox{width:110px; height:45px; float:left; border: 1px solid black;}
+.libox2{width:110px; height: 43px; float:left;}
+
+.urlbox2{list-style: none; margin:0; padding:0;
+   width:240px; height:auto;
+
+}
+.urlbox2 > li{width: 80px; height: 35px; overflow:hidden; float:left;}
+.urlbox2 > li > a >img{width:80px; object-fit:cover;}
+
+</style>
+</head>
+<body>
+
+<ul class="urlbox" id="urlbox">
+
+</ul>
+
+<ul id="banner" class="urlbox2">
+
+</ul>
+
+
+<!--  <li><a href=""><img src="" title=""></a></li>-->
+</body>
+
+<script>
+
+console.log(banners);	//배열 확인먼저..!
+console.log(banners[0]["p_img"]);
+
+var html = document.getElementById("banner");
+var html_li, html_a, html_img;
+
+banners.forEach(function(aa,bb,cc) {	//6바퀴, aa: 배열, bb: index
+	//console.log(bb);
+	//console.log(banners[bb]);
+	//console.log(Object.keys(banners[bb]));	//['p_title', 'p_img', 'p_link']
+	//li, a, img
+	html_li = document.createElement("li");	//마크업 아닌 태그 img는 a안에 들어와야함, 마크업 아닌 태그는 가장 안쪽에..!
+	html_a = document.createElement("a");
+	html_img = document.createElement("img");
+	
+	Object.keys(banners[bb]).forEach(function(a1,a2,a3) {	//3바퀴, a1:key, a2:keyindex
+		//console.log(a1)	
+		//console.log(banners[bb][a1]);
+		//href, src, title
+		switch(a1){
+		case "p_title":
+			html_img.title = banners[bb][a1];	//마우스 올리면 뜨는 거			
+			break;
+		case "p_img":
+			html_img.src = banners[bb][a1];
+			break;
+		case "p_link":
+			html_a.href = banners[bb][a1];
+			break;
+		}
+		
+	});
+	html_a.append(html_img);
+	html_li.append(html_a);
+	html.append(html_li);
+	
+});
+
+
+/*
+console.log(banners.length);   //6
+console.log(banners[0]["p_img"]);   //gmarket 이미지
+console.log(banners[1]["p_img"]);
+console.log(banners[0]);
+console.log(Object.keys(banners[0]).length);   //3
+
+
+var a,li,img;
+var box = document.getElementById("urlbox");
+
+
+var s;
+for(s in banners){
+   //console.log(s);
+   li = document.createElement("li");
+   a= document.createElement("a");
+   img= document.createElement("img");
+
+   li.className = "libox";
+
+   a.target = "_blank";
+
+   //ul.append(li);
+   box.append(li);
+   Object.keys(banners[0]).forEach(function(aa,bb,cc) {
+      //console.log(aa);
+     // console.log(banners[s][aa]);
+  
+      if(aa=="p_img"){
+         console.log("img "+banners[s][aa]);
+         img.src = banners[s][aa];
+         a.append(img);
+      }else if(aa=="p_link"){
+         a.href = banners[s][aa];
+         li.append(a);
+      }
+
+   });
+   
+};
+
+*/
+
+
+</script>
+
+</html>

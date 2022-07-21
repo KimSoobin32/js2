@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>javascript 7일차 배열 데이터 응용</title>
+<script src="http://192.168.100.77:8080/js/user.js"></script>
+<style>
+.box{width:300px;}
+span{display: block; float:left; width: 100px; height:30px; border:1px solid black; box-sizing: border-box;
+	text-align: center; line-height: 30px; font-weight: bold;
+}
+.dataspan{font-weight: normal;}
+</style>
+</head>
+<body>
+<div id="box" class="box">
+<span>회원명</span><span>회원레벨</span><span>회원나이</span>
+
+</div>
+
+<br><br>
+
+<table border="1" cellpadding="0" cellspacing="0">
+<thead>
+	<tr>
+		<th>회원명</th>
+		<th>회원레벨</th>
+		<th>회원나이</th>
+	</tr>
+</thead>
+<tbody id="tbody">
+
+</tbody>
+</table>
+
+<!-- <tbody id="tbody">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</tbody> -->
+
+</body>
+<script>
+
+var html = document.getElementById("tbody");
+//console.log(person["member_list"][0]["name"]);
+var f;
+var td,tr;
+for(f in person["member_list"]){
+	tr=document.createElement("tr");
+	//console.log(f);
+	var ff;
+	for(ff in person["member_list"][f]){
+		td=document.createElement("td");
+		//console.log(ff);
+		var code;
+		switch(ff){
+		case "name":
+			code = ff;			
+			break;
+		case "age":
+			code = "level";			
+			break;
+		case "level":
+			code = "age";			
+			break;
+		}
+		//console.log(person["member_list"][f][code]);
+		td.append(person["member_list"][f][code]);
+		tr.append(td);
+	}
+	
+	html.append(tr);
+}
+
+
+/*
+console.log(person.member_list);
+
+var data = person.member_list;
+//console.log(data[0]["level"]);	//홍길동 레벨
+console.log(data.length);	//4
+console.log(Object.keys(data[0]).length);	//3
+
+var box = document.getElementById("box");
+var span,text;
+
+data.forEach(function(aa,bb,cc) {	//4바퀴
+	//console.log(bb);
+	Object.keys(data[0]).forEach(function(a1,a2,a3) {	//3바퀴
+		//console.log(a1);
+		console.log(data[bb][a1]);
+		span = document.createElement("span");
+		span.className = "dataspan";
+		
+				
+		text = document.createTextNode(data[bb][a1]);
+		
+		
+		switch(a1){
+		case "age":
+			text = document.createTextNode(data[bb]["level"]);
+			break;
+		case "level":
+			text = document.createTextNode(data[bb]["age"]);
+			break;		
+		}
+		
+		span.append(text);
+		box.append(span);
+	});
+	
+});
+*/
+
+
+</script>
+</html>
